@@ -8,6 +8,6 @@ WORKDIR /pia
 
 COPY connect.sh /usr/local/bin/connect.sh
 
-ENV REGION=US Texas
+ENV REGION="US Texas"
 
 ENTRYPOINT ["connect.sh"]
