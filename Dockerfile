@@ -6,4 +6,4 @@ WORKDIR /pia
 COPY connect.sh /usr/local/bin/connect.sh
 
 ENV REGION="US Texas"
-ENTRYPOINT ["/bin/sh"]
+ENTRYPOINT ["connect.sh"]
