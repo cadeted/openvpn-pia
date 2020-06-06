@@ -6,10 +6,13 @@ if [ -n "$REGION" ]; then
 fi
 
 if  [ -n "${USERNAME:-}" ] &&  [ -n "${PASSWORD:-}" ]; then
-	echo ${USERNAME} > ./auth.conf
-	echo ${PASSWORD} >> ./auth.conf
+	echo "Using Envrionment Variables for credentials"
+	echo ${USERNAME} > ./auth2.conf
+	echo ${PASSWORD} >> ./auth2.conf
+	set -- "$@" '--auth-user-pass' '/pia/auth2.conf'
+else
+	echo "Using passed auth.conf file for credentials"
+	set -- "$@" '--auth-user-pass' '/pia/auth.conf'
 fi
-
-set -- "$@" '--auth-user-pass' '/pia/auth.conf'
 
 openvpn "$@"
