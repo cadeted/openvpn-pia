@@ -7,4 +7,5 @@ COPY connect.sh /usr/local/bin/connect.sh
 RUN ["/bin/sh","-c", "chmod +x /usr/local/bin/connect.sh"]
 
 ENV REGION="US Texas"
-ENTRYPOINT [". /usr/local/bin/connect.sh"]
+#ENTRYPOINT [". /usr/local/bin/connect.sh"]
+ENTRYPOINT ["/bin/sh"]
