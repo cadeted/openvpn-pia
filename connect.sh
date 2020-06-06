@@ -2,9 +2,9 @@
 set -e -u -o pipefail
 
 if [ -n "$REGION" ]; then
-  set -- "$@" '--config' "${REGION}.ovpn"
+  set -- "$@" '--config' "./profiles/${REGION}.ovpn"
 fi
 
-set -- "$@" '--auth-user-pass' 'auth.conf'
+set -- "$@" '--auth-user-pass' '/pia/auth.conf'
 
 openvpn "$@"
