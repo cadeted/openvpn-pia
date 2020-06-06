@@ -6,7 +6,7 @@ if [ -n "$REGION" ]; then
 fi
 
 if  [ -n "${USERNAME:-}" ] &&  [ -n "${PASSWORD:-}" ]; then
-	echo "Using Envrionment Variables for credentials"
+	echo "Using Environment Variables for credentials"
 	echo ${USERNAME} > ./auth2.conf
 	echo ${PASSWORD} >> ./auth2.conf
 	set -- "$@" '--auth-user-pass' '/pia/auth2.conf'
