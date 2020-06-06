@@ -8,5 +8,5 @@ RUN ["/bin/sh","-c","chmod +x /pia/connect.sh"]
 
 ENV REGION="US Texas"
 ENV TZ="America/Chicago"
-ENTRYPOINT ["/bin/sh",".","/pia/connect.sh"]
+ENTRYPOINT ["/bin/sh","/pia/connect.sh"]
 
