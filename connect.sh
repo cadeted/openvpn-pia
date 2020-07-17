@@ -5,6 +5,8 @@ if [ -n "$REGION" ]; then
   set -- "$@" '--config' "./${REGION}.ovpn"
 fi
 
+echo "Connecting to ${REGION}"
+
 if  [ -n "${USERNAME:-}" ] &&  [ -n "${PASSWORD:-}" ]; then
 	echo "Using Environment Variables for credentials"
 	echo ${USERNAME} > ./auth2.conf
