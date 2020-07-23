@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e -u -o pipefail
 
+set -- "$@" '--status' '/var/log/openvpn.status' '300' 
+
 if [ -n "$REGION" ]; then
   set -- "$@" '--config' "./${REGION}.ovpn"
 fi
