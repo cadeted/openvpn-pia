@@ -19,4 +19,10 @@ else
 	set -- "$@" '--auth-user-pass' '/pia/auth.conf'
 fi
 
+set -- "$@" '--auth-nocache'
+
+set -- "$@" '--up' '/pia/slack.sh PIA: Tunnel Up'
+set -- "$@" '--down' '/pia/slack.sh PIA: Tunnel Down'
+set -- "$@" '--ipchange' '/pia/slack.sh PIA: Route up or IP Change'
+
 openvpn "$@"

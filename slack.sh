@@ -1,10 +1,13 @@
 #!/bin/sh
 
-CHANNEL="#notification"
-USERNAME="Automaton"
+#if Slack webhook not defined, exit
+if [ -z $SLACK ]; then
+  exit 0
+fi
+
 MSG=$*
 
-PAYLOAD="payload={\"channel\": \"$CHANNEL\", \"username\": \"$USERNAME\", \"text\": \"$MSG\"}"
+PAYLOAD="payload={\"text\": \"$MSG\"}"
 HOOK=$SLACK
 
 curl -X POST --data-urlencode "$PAYLOAD" "$HOOK"
