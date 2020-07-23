@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e -u -o pipefail
 
-set -- "$@" '--status' '/var/log/openvpn.status' '300' 
+set -- "$@" '--status' '/var/log/openvpn.status' 
 
 if [ -n "$REGION" ]; then
   set -- "$@" '--config' "./${REGION}.ovpn"
@@ -20,9 +20,5 @@ else
 fi
 
 set -- "$@" '--auth-nocache'
-
-set -- "$@" '--up' '/pia/slack.sh PIA: Tunnel Up'
-set -- "$@" '--down' '/pia/slack.sh PIA: Tunnel Down'
-set -- "$@" '--ipchange' '/pia/slack.sh PIA: Route up or IP Change'
 
 openvpn "$@"
