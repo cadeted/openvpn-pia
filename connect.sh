@@ -21,4 +21,8 @@ fi
 
 set -- "$@" '--auth-nocache'
 
+set -- "$@" '--management'
+
+set -- "$@" '--ping 30'
+
 openvpn "$@"
