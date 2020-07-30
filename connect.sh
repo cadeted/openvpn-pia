@@ -1,14 +1,15 @@
 #!/bin/sh
 set -e -u -o pipefail
 
-set -- "$@" '--status' '/var/log/openvpn.status' 
-
+#set config file first
 if [ -n "$REGION" ]; then
   set -- "$@" '--config' "./${REGION}.ovpn"
 fi
 
+#echo what PIA region is being used -- based on env variable
 echo "Connecting to ${REGION}"
 
+#set auth commands -- either passed auth.conf or env variables
 if  [ -n "${USERNAME:-}" ] &&  [ -n "${PASSWORD:-}" ]; then
 	echo "Using Environment Variables for credentials"
 	echo ${USERNAME} > ./auth2.conf
@@ -19,10 +20,9 @@ else
 	set -- "$@" '--auth-user-pass' '/pia/auth.conf'
 fi
 
+#set other options/overwrite config files
 set -- "$@" '--auth-nocache'
+set -- "$@" '--status' '/var/log/openvpn.status'
 
-set -- "$@" '--ping' '30'
-
-set -- "$@" '--management' 'localhost' '7088'
-
+#run openvpn
 openvpn "$@"
