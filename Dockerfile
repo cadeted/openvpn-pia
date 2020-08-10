@@ -3,7 +3,6 @@ FROM alpine:latest
 RUN apk add --no-cache openvpn
 RUN apk add tzdata
 RUN apk add curl
-RUN apk add busybox-extras
 COPY ./profiles /pia
 WORKDIR /pia
 COPY connect.sh /pia/connect.sh
