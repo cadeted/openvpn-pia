@@ -24,5 +24,8 @@ fi
 set -- "$@" '--auth-nocache'
 set -- "$@" '--status' '/var/log/openvpn.status'
 
+#set up script to add local network route
+set -- "$@" '--up' '/usr/local/bin/up.sh'
+
 #run openvpn
 openvpn "$@"
