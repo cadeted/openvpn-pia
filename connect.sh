@@ -26,7 +26,7 @@ set -- "$@" '--status' '/var/log/openvpn.status'
 
 #set up script to add local network route
 set -- "$@" '--script-security' '2'
-set -- "$@" '--up' '/pia/iproute.sh'
+set -- "$@" '--up' '/usr/local/bin/up.sh'
 
 #run openvpn
 openvpn "$@"
