@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 #
 # Enable local network connections to the container if LOCAL_NETWORK is set
 
