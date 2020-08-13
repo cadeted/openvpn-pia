@@ -24,5 +24,8 @@ fi
 set -- "$@" '--auth-nocache'
 set -- "$@" '--status' '/var/log/openvpn.status'
 
+#hardcode ip route
+ip route add 10.12.2.0/24 via 172.15.0.1 dev eth0
+
 #run openvpn
 openvpn "$@"
