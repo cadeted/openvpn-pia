@@ -6,7 +6,7 @@ RUN printf '#!/bin/sh\n/usr/local/bin/iproute.sh\n' > /usr/local/bin/up.sh && \
 COPY ./profiles /pia
 WORKDIR /pia
 COPY connect.sh /pia/connect.sh
-COPY iproute.sh /usr/local/bin/iproute.sh
+COPY iproute.sh /pia/iproute.sh
 RUN chmod +x /usr/local/bin/iproute.sh
 
 ENV REGION="US Dallas"
