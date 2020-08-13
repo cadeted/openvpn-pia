@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 RUN apk --no-cache --no-progress add tzdata curl openvpn
-RUN printf '#!/bin/sh\n/usr/local/bin/iproute.sh $LOCAL_NETWORK\n' > /usr/local/bin/up.sh && \
+RUN printf '#!/bin/sh\n/pia/iproute.sh $LOCAL_NETWORK\n' > /usr/local/bin/up.sh && \
     chmod +x /usr/local/bin/up.sh
 COPY ./profiles /pia
 WORKDIR /pia
