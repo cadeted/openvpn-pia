@@ -24,8 +24,11 @@ fi
 set -- "$@" '--auth-nocache'
 set -- "$@" '--status' '/var/log/openvpn.status'
 
-#hardcode ip route
-ip route add 10.12.2.0/24 via 172.15.0.1 dev eth0
+#set ip route
+if [ -n "${LOCAL_NETWORK}" ]; then
+    eval "$(ip r l | grep -v 'tun0\|kernel'|awk '{print "GW="$3"\nINT="$5}')"
+    ip route add "$LOCAL_NETWORK" via "$GW" dev "$INT"
+fi
 
 #run openvpn
 openvpn "$@"
