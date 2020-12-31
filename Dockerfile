@@ -1,6 +1,7 @@
 FROM alpine:latest
 
 RUN apk --no-cache --no-progress add tzdata curl openvpn
+RUN apk --no-cache --no-progress add bmon
 
 COPY ./profiles /pia
 WORKDIR /pia
