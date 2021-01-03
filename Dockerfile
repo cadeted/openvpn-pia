@@ -7,6 +7,8 @@ COPY ./profiles /pia
 WORKDIR /pia
 COPY connect.sh /pia/connect.sh
 
-ENV REGION="US Dallas"
+ENV REGION="US Texas"
 ENV TZ="America/Chicago"
+
+HEALTHCHECK --interval=15m --timeout=3s CMD curl -f ipinfo.io/ip || exit 1
 ENTRYPOINT ["/bin/sh","/pia/connect.sh"]
