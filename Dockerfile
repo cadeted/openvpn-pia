@@ -8,7 +8,7 @@ WORKDIR /pia
 COPY connect.sh /pia/connect.sh
 COPY up.sh /pia/up.sh
 
-CMD chmod +x /pia/up.sh
+RUN chmod +x /pia/up.sh
 
 ENV REGION="US Texas"
 ENV TZ="America/Chicago"
