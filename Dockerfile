@@ -14,6 +14,6 @@ COPY connect.sh /pia/connect.sh
 ENV REGION="us_east"
 
 #healthcheck for vpn tunnel up
-HEALTHCHECK --interval=30m --timeout=15s CMD curl -L 'https://api.ipify.org'
+HEALTHCHECK --interval=5m --timeout=15s CMD curl -L 'https://api.ipify.org'
 
 ENTRYPOINT ["/bin/sh","/pia/connect.sh"]
