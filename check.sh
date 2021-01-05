@@ -1,8 +1,13 @@
 #!/bin/sh
 
-#remove default route 
-/sbin/ip route del default
-
-#capture 
+tun_ip=$(cat /pia/ip)
 ip="$(ifconfig | grep -A 1 'tun0' | tail -1 | cut -d ':' -f 2 | cut -d ' ' -f 1)"
-echo $ip > /pia/ip
+
+if  [ $tun_ip == $ip ]; then
+  exit 0
+else
+  exit 1
+fi
+
+
+
