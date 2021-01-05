@@ -3,7 +3,7 @@ set -e -u -o pipefail
 
 #set config file first
 if [ -n "$REGION" ]; then
-  set -- "$@" '--config' "./${REGION}.ovpn"
+  set -- "$@" '--config' "./profiles/${REGION}.ovpn"
 fi
 
 #echo what PIA region is being used -- based on env variable
@@ -23,6 +23,10 @@ fi
 #set other options/overwrite config files
 set -- "$@" '--auth-nocache'
 set -- "$@" '--status' '/var/log/openvpn.status'
+
+#remove default route
+set -- "$@" '--script-security' '2'
+set -- "$@" '--route-up' '/sbin/ip route del default'
 
 #set ip route
 if [ -n "${LOCAL_NETWORK:-}" ]; then
