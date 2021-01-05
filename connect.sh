@@ -30,5 +30,8 @@ if [ -n "${LOCAL_NETWORK:-}" ]; then
     ip route add "${LOCAL_NETWORK}" via "$GW" dev "$INT"
 fi
 
+set -- "$@" '--script-security' '2'
+set -- "$@" '--up' '/pia/up.sh'
+
 #run openvpn
 openvpn "$@"
