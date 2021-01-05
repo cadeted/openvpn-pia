@@ -3,7 +3,7 @@ set -e -u -o pipefail
 
 #set config file first
 if [ -n "$REGION" ]; then
-  set -- "$@" '--config' "./${REGION}.ovpn"
+  set -- "$@" '--config' "./profiles/${REGION}.ovpn"
 fi
 
 #echo what PIA region is being used -- based on env variable

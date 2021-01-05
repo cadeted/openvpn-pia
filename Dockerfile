@@ -4,7 +4,7 @@ FROM alpine:latest
 RUN apk --no-cache --no-progress add tzdata curl openvpn bmon
 
 #copy over pia profiles to docker FS
-COPY ./profiles /pia
+COPY ./profiles /pia/profiles
 WORKDIR /pia
 
 #connection script to handle env variables and openvpn arguments
