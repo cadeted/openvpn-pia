@@ -25,7 +25,7 @@ set -- "$@" '--auth-nocache'
 set -- "$@" '--status' '/var/log/openvpn.status'
 
 #remove default route
-set -- "$@" '--route-up' 'ip route del default'
+set -- "$@" '--route-up' '/sbin/ip route del default'
 
 #set ip route
 if [ -n "${LOCAL_NETWORK:-}" ]; then
