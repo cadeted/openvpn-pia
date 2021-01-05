@@ -1,13 +1,10 @@
 FROM alpine:latest
 
-RUN apk --no-cache --no-progress add tzdata curl openvpn
-RUN apk --no-cache --no-progress add bmon
+RUN apk --no-cache --no-progress add tzdata curl openvpn bmon
 
 COPY ./profiles /pia
 WORKDIR /pia
-COPY *.sh /pia/
-
-RUN chmod +x /pia/*.sh
+COPY connect.sh /pia/connect.sh
 
 ENV REGION="US Texas"
 ENV TZ="America/Chicago"

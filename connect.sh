@@ -25,6 +25,7 @@ set -- "$@" '--auth-nocache'
 set -- "$@" '--status' '/var/log/openvpn.status'
 
 #remove default route
+set -- "$@" '--script-security' '2'
 set -- "$@" '--route-up' '/sbin/ip route del default'
 
 #set ip route
@@ -32,9 +33,6 @@ if [ -n "${LOCAL_NETWORK:-}" ]; then
     eval "$(ip r l | grep -v 'tun0\|kernel'|awk '{print "GW="$3"\nINT="$5}')"
     ip route add "${LOCAL_NETWORK}" via "$GW" dev "$INT"
 fi
-
-#set -- "$@" '--script-security' '2'
-#set -- "$@" '--up' '/pia/up.sh'
 
 #run openvpn
 openvpn "$@"
